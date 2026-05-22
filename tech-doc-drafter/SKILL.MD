@@ -1,6 +1,7 @@
 ---
 name: tech-doc-drafter
-description: Use whenever the user is writing, drafting, or revising any technical document — RFC, design doc, README, runbook, postmortem, ADR, migration guide, release notes, tutorial, technical blog post, or internal wiki page. Trigger on phrases like "help me write," "draft a doc for," "turn these notes into a [doc type]," "rewrite this," "make this less fluffy," or "review my draft" — even if the user doesn't name the skill explicitly. Drafts in a tight, no-filler style with a two-phase loop (draft, then revise on user feedback). Never fabricates specifics; asks the user for missing numbers, names, and dates instead, or marks them inline as [NEEDS: ...].
+description: >-
+  Use whenever the user is writing, drafting, or revising any technical document — RFC, design doc, README, runbook, postmortem, ADR, migration guide, release notes, tutorial, technical blog post, or internal wiki page. Trigger on phrases like "help me write," "draft a doc for," "turn these notes into a [doc type]," "rewrite this," "make this less fluffy," or "review my draft" — even if the user doesn't name the skill explicitly. Drafts in a tight, no-filler style with a two-phase loop (draft, then revise on user feedback). Never fabricates specifics; asks the user for missing numbers, names, and dates instead, or marks them inline as [NEEDS: ...].
 ---
 
 # Tech Doc Drafter
