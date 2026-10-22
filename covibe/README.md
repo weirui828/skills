@@ -34,4 +34,6 @@ The skill is the `covibe/` folder.
 
 - **Claude (claude.ai and the apps)**: zip the `covibe/` folder and upload it in Claude's skill settings.
 - **Claude Code**: copy `covibe/` into your skills directory, for example `~/.claude/skills/covibe/`.
+- **Codex on your machine**: copy `covibe/` into `~/.codex/skills/covibe/`.
+- **ChatGPT and Codex web sessions**: make the skill files available in the session's environment or through a supported plugin. A local Codex installation does not sync them to web sessions. See [the ChatGPT/Codex reference](covibe/references/chatgpt-codex.md) for delivery requirements and manual fallback.
 - **Other agents with skill support**: the main instructions are platform-neutral. A platform needs a stable page URL, a comment store, and a way for a comment to start the agent's session.

@@ -124,6 +124,9 @@ operate.
 The data for each platform is in `references/`. There is one file for
 each platform.
 
+- For Claude artifacts, read [references/claude-artifacts.md](references/claude-artifacts.md).
+- For ChatGPT or Codex, read [references/chatgpt-codex.md](references/chatgpt-codex.md).
+
 ## 5. Procedure for comments
 
 1. Each time your session starts, read all unresolved comments on the
