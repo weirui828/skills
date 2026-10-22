@@ -1,0 +1,36 @@
+<title>Page name</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Your page styles (the vibe layer). Theme the comment layer with --cv-* tokens. */
+:root { --cv-accent: #2f5d8a; }
+body { font-family: system-ui, sans-serif; margin: 0; }
+main { max-width: 72ch; margin: 0 auto; padding: 24px 16px 96px; }
+</style>
+<style>/*covibe:css*/</style>
+
+<main id="covibe-root">
+  <h1 data-covibe-id="t9k2a" data-covibe-label="Title">Page name</h1>
+  <p data-covibe-id="p4m7x">Each commentable element has a data-covibe-id that never changes.</p>
+  <svg viewBox="0 0 200 60" width="200" height="60" aria-label="Example diagram">
+    <g data-covibe-id="n2q8d" data-covibe-label="Node A"><rect x="10" y="10" width="80" height="40" rx="6" fill="none" stroke="currentColor"/><text x="50" y="35" text-anchor="middle">A</text></g>
+  </svg>
+  <section id="covibe-meta"></section>
+</main>
+
+<script type="application/json" id="covibe-state">
+{
+  "schema": "covibe/2",
+  "session": "replace-with-a-unique-session-id",
+  "revision": 1,
+  "mode": "batch",
+  "batchSize": 5,
+  "lang": "en",
+  "threads": {},
+  "status": {},
+  "handled": [],
+  "trash": [],
+  "versions": [{ "revision": 1, "summary": "First draft." }]
+}
+</script>
+<script>/*covibe:js*/</script>
+<script>Covibe.mount({ root: document.getElementById("covibe-root") });</script>
