@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Onboarding redesign — design review (covibe demo)</title>
+<style>
+  :root {
+    --bg: #f4f6f8; --fg: #18222e; --muted: #5a6776; --card: #fff; --rule: #d9dfe6; --accent: #2f5d8a;
+    --cv-accent: #2f5d8a; --cv-bg: #fff; --cv-fg: #18222e; --cv-rule: #d9dfe6; --cv-soft: #e8eef5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #11161c; --fg: #e5eaf0; --muted: #98a4b1; --card: #1a2129; --rule: #2b3540; --accent: #86b2dc;
+      --cv-accent: #86b2dc; --cv-bg: #1a2129; --cv-fg: #e5eaf0; --cv-rule: #2b3540; --cv-soft: #22344a; color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 140px; display: grid; gap: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin: 0; text-wrap: balance; }
+  h2 { font-size: 20px; margin: 16px 0 0; }
+  p, ul { margin: 0; }
+  .lede, .note { color: var(--muted); }
+  .note { font-size: 13px; border: 1px dashed var(--rule); border-radius: 8px; padding: 10px 12px; }
+  .card { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: grid; gap: 6px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-size: 12px; font-weight: 600; border: 1px solid var(--rule); border-radius: 99px; padding: 3px 10px; background: var(--card); }
+  .pill.ok { color: #2e7d5b; border-color: #2e7d5b; }
+  .pill.wait { color: #9a5a00; border-color: #9a5a00; }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  a { color: var(--accent); }
+  button.approve { justify-self: start; font: inherit; font-weight: 600; color: #fff; background: var(--accent); border: 0; border-radius: 6px; padding: 8px 16px; cursor: pointer; }
+  svg { width: 100%; max-width: 620px; height: auto; display: block; }
+  svg rect.node { fill: var(--card); stroke: var(--rule); stroke-width: 1.5; }
+  svg text { fill: var(--fg); font-size: 13px; font-family: inherit; }
+  svg path { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+  svg .hit { fill: transparent; stroke: none; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 8px; }
+</style>
+<style>/*covibe:css*/</style>
+</head>
+<body>
+
+<main id="covibe-root">
+  <p class="note">
+    <b>covibe demo</b> — a design-review page with the DSH comment layer in manual mode, so it works
+    from <code>file://</code> with no server. Tap anything to comment; try the quick marks, the diagram
+    markers, review mode, unread replies, the trash below, and “Copy for chat”. Comments stay in this
+    browser (localStorage) until you copy them into chat or republish the page.
+  </p>
+
+  <h1 data-covibe-id="t1-title" data-covibe-label="Title">Onboarding redesign — design review</h1>
+  <p class="lede" data-covibe-id="p2-lede">Three-screen onboarding for the new workspace product. This page records the decisions and the open questions from the review on Thursday.</p>
+
+  <div class="row">
+    <span class="pill ok" data-covibe-id="s1-status" data-covibe-label="Status: flow agreed">Flow agreed</span>
+    <span class="pill wait" data-covibe-id="s2-status" data-covibe-label="Status: copy pending">Copy pending</span>
+    <span class="pill" data-covibe-id="s3-status" data-covibe-label="Status: open question">Open question</span>
+  </div>
+
+  <h2 data-covibe-id="h2-goals" data-covibe-label="Goals heading">Goals</h2>
+  <div class="card" data-covibe-id="goal-card" data-covibe-label="Goals card">
+    <ul>
+      <li data-covibe-id="goal-1" data-covibe-label="Goal: time to first value">Get a new team to its first shared workspace in under two minutes.</li>
+      <li data-covibe-id="goal-2" data-covibe-label="Goal: no dead ends">Never show a screen the user cannot skip or undo.</li>
+      <li data-covibe-id="goal-3" data-covibe-label="Goal: explain the why">Say why each permission is asked for, in one sentence.</li>
+    </ul>
+  </div>
+
+  <h2 data-covibe-id="h2-flow" data-covibe-label="Flow heading">Proposed flow</h2>
+  <div class="grid3">
+    <div class="card" data-covibe-id="step-1" data-covibe-label="Step 1: create workspace">
+      <b>1. Create workspace</b>
+      <p>Name + region. Region is pre-filled from the browser locale and can be changed later.</p>
+    </div>
+    <div class="card" data-covibe-id="step-2" data-covibe-label="Step 2: invite team">
+      <b>2. Invite team</b>
+      <p>Paste email addresses, or copy a join link. Skippable.</p>
+    </div>
+    <div class="card" data-covibe-id="step-3" data-covibe-label="Step 3: first doc">
+      <b>3. First document</b>
+      <p>Pick a template. This is the moment we want the user to feel the product, not a form.</p>
+    </div>
+  </div>
+
+  <h2 data-covibe-id="h2-diagram" data-covibe-label="Flow diagram heading">The flow, as a diagram</h2>
+  <svg viewBox="0 0 620 120" role="img" aria-label="Onboarding flow diagram">
+    <g data-covibe-id="n1-workspace" data-covibe-label="Diagram: Create workspace">
+      <rect class="node" x="8" y="40" width="150" height="40" rx="6"></rect>
+      <text x="83" y="65" text-anchor="middle">Create workspace</text>
+    </g>
+    <g data-covibe-id="a1-arrow" data-covibe-label="Arrow: then">
+      <path d="M158,60 L218,60"></path>
+      <rect class="hit" x="158" y="42" width="60" height="36"></rect>
+    </g>
+    <g data-covibe-id="n2-invite" data-covibe-label="Diagram: Invite team">
+      <rect class="node" x="218" y="40" width="150" height="40" rx="6"></rect>
+      <text x="293" y="65" text-anchor="middle">Invite team</text>
+    </g>
+    <g data-covibe-id="a2-arrow" data-covibe-label="Arrow: then">
+      <path d="M368,60 L428,60"></path>
+      <rect class="hit" x="368" y="42" width="60" height="36"></rect>
+    </g>
+    <g data-covibe-id="n3-doc" data-covibe-label="Diagram: First document">
+      <rect class="node" x="428" y="40" width="178" height="40" rx="6"></rect>
+      <text x="517" y="65" text-anchor="middle">First document</text>
+    </g>
+  </svg>
+  <p data-covibe-id="p4-legend" data-covibe-label="Diagram legend">The dashed part is what we would remove: the old “choose a plan” step between workspace and invite.</p>
+
+  <h2 data-covibe-id="h2-open" data-covibe-label="Open questions heading">Open questions</h2>
+  <div class="card" data-covibe-id="open-card" data-covibe-label="Open questions card">
+    <ul>
+      <li data-covibe-id="q1-region" data-covibe-label="Question: region default">Do we trust the browser locale for the region default, or ask explicitly?</li>
+      <li data-covibe-id="q2-invite" data-covibe-label="Question: invite step">Is the invite step worth its screen if most users skip it?</li>
+      <li data-covibe-id="q3-copy" data-covibe-label="Question: tone of copy">Should the first screen say “workspace” or “team space”?</li>
+    </ul>
+  </div>
+
+  <p data-covibe-id="p6-link" data-covibe-label="Link paragraph">
+    Background: the <a href="https://example.com/onboarding-metrics" target="_blank" rel="noopener">onboarding metrics memo</a>.
+    Links work normally; turn on review mode to comment on this one.
+  </p>
+
+  <button class="approve" type="button" data-covibe-id="btn-approve" data-covibe-label="Approve button" onclick="this.textContent='Approved ✓'">Approve the plan</button>
+
+  <section id="covibe-meta"></section>
+  <footer>covibe demo · manual transport · state revision 3</footer>
+</main>
+
+<!-- Injected state: in a real session the agent rewrites this block at every publish. -->
+<script type="application/json" id="covibe-state">
+{
+  "schema": "covibe/2",
+  "session": "demo-onboarding-review",
+  "revision": 3,
+  "pageId": "onboarding-redesign",
+  "mode": "manual",
+  "batchSize": 5,
+  "lang": "en",
+  "agentName": "Agent",
+  "threads": {
+    "step-1": [
+      { "id": "c-demo-1", "who": "user", "text": "Can we make the region default follow the browser locale?", "quote": "Region is pre-filled from the browser locale" },
+      { "id": "r-demo-1", "who": "agent", "text": "Yes — but only as a suggestion. The field stays editable and we show the detected region in the label. (Example reply from the agent.)", "rev": 3, "replyTo": ["c-demo-1"] }
+    ],
+    "goal-1": [
+      { "id": "c-demo-2", "who": "user", "text": "Two minutes is ambitious. Can we commit to three?", "mark": "dislike" },
+      { "id": "r-demo-2", "who": "agent", "text": "Changed the target to “under three minutes” and noted the measurement plan. (Example reply, already read.)", "rev": 2, "replyTo": ["c-demo-2"] }
+    ],
+    "n2-invite": [
+      { "id": "r-demo-3", "who": "agent", "text": "The invite step gets a “Skip for now” link in the top right; the join link stays available from the workspace settings. (New reply on a diagram node — tap the marker.)", "rev": 3, "replyTo": [] }
+    ],
+    "a1-arrow": [
+      { "id": "c-demo-3", "who": "user", "text": "This transition feels abrupt. Add a short animation?", "mark": "explain" },
+      { "id": "r-demo-4", "who": "agent", "text": "Added a 150 ms slide; it respects prefers-reduced-motion. (Example reply on an arrow.)", "rev": 3, "replyTo": ["c-demo-3"] }
+    ]
+  },
+  "status": { "step-2": "waiting-for-user" },
+  "handled": ["c-demo-1", "c-demo-2", "c-demo-3"],
+  "trash": [
+    { "id": "toggle-auto", "label": "Auto-advance toggle (deleted)", "html": "<p>Old option: auto-advance after 5 seconds. Deleted because it caused accidental submissions.</p>" }
+  ],
+  "versions": [
+    { "revision": 1, "summary": "First draft of the flow and the open questions." },
+    { "revision": 2, "summary": "Goal changed to under three minutes; diagram added." },
+    { "revision": 3, "summary": "Region default explained; invite skip added; auto-advance moved to trash." }
+  ]
+}
+</script>
+
+<script>
+  window.COVIBE = {
+    state: "#covibe-state",
+    transport: "manual",
+    mode: "manual",
+    pageId: "onboarding-redesign",
+    pageVersion: 3,
+    batchN: 5,
+    lang: "en"
+  };
+</script>
+
+<script>/*covibe:js*/</script>
+<script>Covibe.mount({ root: document.getElementById("covibe-root") });</script>
+</body>
+</html>

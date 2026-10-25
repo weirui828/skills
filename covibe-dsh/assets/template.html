@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Page name — covibe</title>
+<style>
+  /* The vibe layer: your page's own styles. Theme the comment layer with --cv-* tokens. */
+  :root { --cv-accent: #2f5d8a; --cv-bg: #fff; --cv-fg: #1b2430; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #f6f7f9; color: #1b2430; }
+  main { max-width: 72ch; margin: 0 auto; padding: 28px 16px 140px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 8px; }
+  .card { background: #fff; border: 1px solid #dde2e8; border-radius: 8px; padding: 14px 16px; margin: 10px 0; }
+</style>
+<style>/*covibe:css*/</style>
+</head>
+<body>
+
+<main id="covibe-root">
+  <!--
+    Build rules (covibe 1.1, §3):
+    - Every element the user may comment on gets a data-covibe-id that is unique
+      and NEVER changes or gets reused. Put it on the <g> for SVG nodes/arrows.
+    - data-covibe-label gives a short name when the element's text is not a good one.
+    - Keep <section id="covibe-meta">: the layer renders trash + version log there.
+    - This file is the SOURCE. Publish a built copy with scripts/inline.py; never
+      hand-edit the built copy.
+  -->
+  <h1 data-covibe-id="t1-title" data-covibe-label="Title">Page name</h1>
+  <p data-covibe-id="p1-lede">A short lede that explains the page. Tap any element to comment.</p>
+
+  <div class="card" data-covibe-id="card-1" data-covibe-label="Card one">
+    <b>Card one</b>
+    <p>A block element: its thread opens directly below it.</p>
+  </div>
+
+  <button type="button" data-covibe-id="btn-1" data-covibe-label="A real button">A real button</button>
+
+  <svg viewBox="0 0 240 60" width="240" height="60" role="img" aria-label="Example diagram">
+    <!-- Small element: the layer puts a count marker on it and opens a panel. -->
+    <g data-covibe-id="node-1" data-covibe-label="Node A">
+      <rect x="8" y="10" width="90" height="40" rx="6" fill="#fff" stroke="#8a97a6"></rect>
+      <text x="53" y="35" text-anchor="middle" font-size="13">Node A</text>
+    </g>
+  </svg>
+
+  <section id="covibe-meta"></section>
+</main>
+
+<!--
+  Injected state, rewritten by the agent at every publish (covibe/2 format).
+  The page never writes this; it only renders threads, handled IDs, trash and
+  versions from it. Comment text is always rendered as plain text.
+-->
+<script type="application/json" id="covibe-state">
+{
+  "schema": "covibe/2",
+  "session": "replace-with-a-unique-session-id",
+  "revision": 1,
+  "pageId": "replace-with-a-page-id",
+  "mode": "manual",
+  "batchSize": 5,
+  "lang": "en",
+  "agentName": "Agent",
+  "threads": {},
+  "status": {},
+  "handled": [],
+  "trash": [],
+  "versions": [{ "revision": 1, "summary": "First draft." }]
+}
+</script>
+
+<!--
+  Delivery config (read by the layer; optional — env vars here are placeholders).
+  DSH has no artifact host, so live/batch delivery goes to a local covibe_server.
+  Keep the page self-contained: this config is inlined by the agent at publish time.
+
+  transport "manual": collect on the page + "Copy for chat" (works from file://).
+  transport "post":   POST JSON to endpoint; see README "Wire format".
+  transport "none":   collect only, no delivery controls.
+-->
+<script>
+  window.COVIBE = {
+    state: "#covibe-state",
+    transport: "manual",
+    mode: "manual",
+    // markDelivery: "immediate",  // "immediate" (default: marks are delivered like comments) | "defer" (covibe 1.1 §4: marks wait for next text comment)
+    // updateMode: "hotswap",     // "hotswap" (default: poll and swap the page in place) | "banner" (show a Reload notice) | "off"
+    // pollMs: 3000,              // optional poll interval for /cv/meta (min 1000)
+    pageId: "replace-with-a-page-id",
+    pageVersion: 1,
+    // endpoint: "http://127.0.0.1:8787/cv/comments",
+    // token: "replace-with-the-server-token",
+    // metaUrl: "http://127.0.0.1:8787/cv/meta",  // optional; derived from endpoint
+
+    batchN: 5,
+    lang: "en"
+  };
+</script>
+
+<!-- Build: python3 scripts/inline.py this-file.html publish/index.html -->
+<script>/*covibe:js*/</script>
+<script>Covibe.mount({ root: document.getElementById("covibe-root") });</script>
+</body>
+</html>

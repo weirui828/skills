@@ -1,0 +1,7 @@
+# review artefacts produced by using the skill
+publish/
+.covibe/
+covibe-pages/
+*.zip
+.DS_Store
+node_modules/

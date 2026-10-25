@@ -1,0 +1,123 @@
+/* covibe comment layer — DSH port. Theme it by overriding the --cv-* tokens. */
+:root {
+  --cv-accent: #2f5d8a; --cv-accent-fg: #ffffff; --cv-bg: #ffffff; --cv-fg: #1b2430;
+  --cv-muted: #5b6876; --cv-rule: #d8dee5; --cv-soft: #e3ecf5;
+  --cv-warn: #9a5a00; --cv-warn-soft: #fdf0d8; --cv-ok: #2e7d5b; --cv-danger: #a33a2a;
+  --cv-font: inherit; --cv-radius: 6px; --cv-shadow: 0 8px 28px rgba(0, 0, 0, .18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --cv-accent: #86b2dc; --cv-accent-fg: #0f1720; --cv-bg: #1a2129; --cv-fg: #e6ebf0;
+    --cv-muted: #97a3b0; --cv-rule: #2c3640; --cv-soft: #22344a;
+    --cv-warn: #f0bf62; --cv-warn-soft: #3a3018; --cv-ok: #7fcfa8; --cv-danger: #f0a08a;
+  }
+}
+:root[data-theme="dark"] {
+  --cv-accent: #86b2dc; --cv-accent-fg: #0f1720; --cv-bg: #1a2129; --cv-fg: #e6ebf0;
+  --cv-muted: #97a3b0; --cv-rule: #2c3640; --cv-soft: #22344a;
+  --cv-warn: #f0bf62; --cv-warn-soft: #3a3018; --cv-ok: #7fcfa8; --cv-danger: #f0a08a;
+}
+
+/* --- commentable targets --- */
+.cv-target { cursor: pointer; border-radius: 3px; }
+.cv-target:hover { outline: 1px dashed var(--cv-accent); outline-offset: 3px; }
+.cv-target:focus-visible { outline: 2px solid var(--cv-accent); outline-offset: 3px; }
+:root:not(.cv-review) .cv-target a, :root:not(.cv-review) .cv-target button { cursor: auto; }
+.cv-review .cv-target :is(a, button, input, select, summary, [role="button"]) { outline: 2px dashed var(--cv-warn); outline-offset: 2px; }
+.cv-hl { outline: 2px solid var(--cv-accent) !important; outline-offset: 3px; }
+svg .cv-hl { outline: none !important; stroke: var(--cv-accent) !important; stroke-width: 2.5 !important; }
+
+/* --- threads --- */
+.cv-thread { display: grid; gap: 6px; margin: 8px 0; font-family: var(--cv-font); font-size: 14px; line-height: 1.5; color: var(--cv-fg); }
+.cv-thread-head { display: flex; align-items: center; gap: 8px; }
+.cv-thread-label { font-size: 11px; font-weight: 700; letter-spacing: .02em; color: var(--cv-muted); overflow-wrap: anywhere; }
+.cv-goto { margin-left: auto; }
+.cv-entry { display: grid; gap: 2px; padding: 6px 10px; border-radius: var(--cv-radius); }
+.cv-you { border-left: 2px solid var(--cv-rule); border-radius: 0; padding: 2px 0 2px 10px; }
+.cv-agent { background: var(--cv-soft); }
+.cv-by { font-size: 11px; font-weight: 600; color: var(--cv-muted); letter-spacing: .02em; }
+.cv-agent .cv-by { color: var(--cv-accent); }
+.cv-mark { font-size: 12px; font-weight: 600; color: var(--cv-accent); }
+.cv-rev { font-size: 10px; color: var(--cv-muted); }
+.cv-quote { display: block; font-size: 13px; color: var(--cv-muted); border-left: 2px solid var(--cv-soft); padding-left: 8px; font-style: italic; }
+.cv-quote::before, .cv-quote::after { content: none; }
+.cv-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.cv-pending { opacity: .85; }
+.cv-wait { font-size: 11px; color: var(--cv-accent); }
+.cv-pending.cv-failed .cv-wait { color: var(--cv-danger); font-weight: 600; }
+.cv-unread { box-shadow: 0 0 0 2px var(--cv-warn); background: var(--cv-warn-soft); cursor: pointer; }
+.cv-unread-tag { justify-self: start; font-size: 11px; font-weight: 700; color: var(--cv-bg); background: var(--cv-warn); border-radius: 99px; padding: 0 8px; }
+.cv-unread:focus-visible { outline: 2px solid var(--cv-fg); outline-offset: 2px; }
+.cv-status { justify-self: start; font-size: 11px; font-weight: 700; color: var(--cv-warn); background: var(--cv-warn-soft); border-radius: 99px; padding: 1px 8px; }
+
+/* --- composer --- */
+.cv-composer { display: grid; gap: 8px; padding: 10px 0 2px; border-top: 1px dashed var(--cv-rule); cursor: auto; }
+.cv-marks { display: flex; flex-wrap: wrap; gap: 6px; }
+.cv-markbtn, .cv-btn, .cv-btn-ghost, .cv-dock-btn, .cv-badge, .cv-panel-title { font: inherit; font-family: var(--cv-font); }
+.cv-markbtn { font-size: 12px; color: var(--cv-fg); background: var(--cv-bg); border: 1px solid var(--cv-rule); border-radius: 99px; padding: 3px 10px; cursor: pointer; }
+.cv-markbtn:hover { border-color: var(--cv-accent); color: var(--cv-accent); }
+.cv-input { font: inherit; font-size: 15px; color: var(--cv-fg); background: var(--cv-bg); border: 1px solid var(--cv-rule); border-radius: var(--cv-radius); padding: 8px 10px; min-height: 70px; width: 100%; box-sizing: border-box; resize: vertical; }
+.cv-input:focus-visible { outline: 2px solid var(--cv-accent); outline-offset: 1px; }
+.cv-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cv-btn { font-size: 13px; font-weight: 600; color: var(--cv-accent-fg); background: var(--cv-accent); border: 0; border-radius: 4px; padding: 5px 14px; cursor: pointer; }
+.cv-btn:disabled { opacity: .5; cursor: default; }
+.cv-btn-ghost { font-size: 12px; color: var(--cv-muted); background: none; border: 1px solid var(--cv-rule); border-radius: 4px; padding: 3px 10px; cursor: pointer; }
+.cv-msg { font-size: 12px; color: var(--cv-muted); }
+.cv-msg.cv-ok { color: var(--cv-ok); }
+.cv-msg.cv-warn { color: var(--cv-warn); }
+.cv-hint { margin: 0; font-size: 12px; color: var(--cv-warn); background: var(--cv-warn-soft); border-radius: 4px; padding: 6px 8px; }
+:is(.cv-markbtn, .cv-btn, .cv-btn-ghost, .cv-dock-btn, .cv-badge, .cv-panel-title):focus-visible { outline: 2px solid var(--cv-accent); outline-offset: 2px; }
+
+/* --- count markers on small elements --- */
+.cv-badge { position: absolute; z-index: 30; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 99px; border: 0; font-size: 11px; font-weight: 700; color: var(--cv-accent-fg); background: var(--cv-accent); cursor: pointer; display: grid; place-items: center; }
+.cv-badge-unread { background: var(--cv-warn); color: var(--cv-bg); box-shadow: 0 0 0 3px var(--cv-warn-soft); }
+
+/* --- thread panel: popover on desktop, bottom sheet on a phone --- */
+.cv-panel { position: absolute; z-index: 40; width: 320px; max-height: 70vh; overflow: auto; background: var(--cv-bg); color: var(--cv-fg); border: 1px solid var(--cv-rule); border-radius: 8px; box-shadow: var(--cv-shadow); padding: 12px; display: grid; gap: 10px; font-family: var(--cv-font); }
+.cv-panel.cv-sheet { position: fixed; left: 0; right: 0; bottom: 0; top: auto; width: auto; max-height: 65vh; border-radius: 12px 12px 0 0; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.cv-panel-head { display: flex; align-items: center; gap: 8px; }
+.cv-panel-title { flex: 1; text-align: left; font-weight: 700; font-size: 14px; color: var(--cv-fg); background: none; border: 0; padding: 0; cursor: pointer; }
+.cv-thread-panel { margin: 0; }
+
+/* --- dock: always available, including when the layer is hidden --- */
+.cv-dock { position: fixed; z-index: 50; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; align-items: flex-end; gap: 8px; max-width: min(320px, calc(100vw - 32px)); }
+.cv-dock-btn { font-size: 13px; font-weight: 600; color: var(--cv-accent-fg); background: var(--cv-accent); border: 0; border-radius: 99px; padding: 8px 14px; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .16); }
+.cv-dock-btn:disabled { opacity: .55; cursor: default; }
+.cv-dock-ghost { color: var(--cv-fg); background: var(--cv-bg); border: 1px solid var(--cv-rule); }
+.cv-dock-ghost.cv-on { border-color: var(--cv-warn); color: var(--cv-warn); }
+.cv-dock-unread { background: var(--cv-warn); color: var(--cv-bg); }
+.cv-dock-warn { background: var(--cv-bg); color: var(--cv-danger); border: 1px solid var(--cv-danger); }
+.cv-dock-count { font-size: 12px; color: var(--cv-muted); background: var(--cv-bg); border: 1px dashed var(--cv-rule); border-radius: 99px; padding: 5px 10px; }
+.cv-dock-notice { font-size: 11px; line-height: 1.4; color: var(--cv-warn); background: var(--cv-warn-soft); border-radius: 6px; padding: 6px 8px; max-width: 280px; }
+.cv-dock-toast { font-size: 12px; color: var(--cv-bg); background: var(--cv-fg); border-radius: 6px; padding: 5px 9px; }
+.cv-dock-toast.cv-warn { background: var(--cv-warn); color: var(--cv-bg); }
+.cv-dock-toast.cv-ok { background: var(--cv-ok); color: var(--cv-bg); }
+
+/* --- manual handoff --- */
+.cv-export { position: fixed; z-index: 60; left: 50%; bottom: 80px; transform: translateX(-50%); width: min(560px, calc(100vw - 32px)); display: grid; gap: 8px; background: var(--cv-bg); border: 1px solid var(--cv-rule); border-radius: 8px; padding: 12px; box-shadow: var(--cv-shadow); }
+.cv-export .cv-input { min-height: 160px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+/* --- trash + version log --- */
+.cv-meta { display: grid; gap: 8px; margin-top: 32px; font-family: var(--cv-font); }
+.cv-meta-title { font-size: 16px; margin: 12px 0 0; }
+.cv-trash-item { border: 1px solid var(--cv-rule); border-radius: var(--cv-radius); padding: 8px 12px; opacity: .9; }
+.cv-trash-item summary { cursor: pointer; }
+.cv-trash-body { padding: 8px 0; border-top: 1px dashed var(--cv-rule); }
+.cv-versions { margin: 0; padding-left: 1.4em; font-size: 13px; color: var(--cv-muted); display: grid; gap: 2px; }
+
+/* --- revision banner (post transport): top-centre so it never overlaps the dock --- */
+.cv-update { position: fixed; z-index: 55; top: calc(12px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); width: min(560px, calc(100vw - 24px)); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: var(--cv-bg); color: var(--cv-fg); border: 1px solid var(--cv-accent); border-left: 4px solid var(--cv-accent); border-radius: 8px; box-shadow: var(--cv-shadow); padding: 8px 12px; font-family: var(--cv-font); font-size: 13px; line-height: 1.4; }
+.cv-update-text { flex: 1 1 200px; }
+.cv-update .cv-btn, .cv-update .cv-btn-ghost { padding: 4px 12px; }
+
+/* --- hotswap toast: top-centre so it never covers the dock --- */
+.cv-toast { position: fixed; z-index: 56; top: calc(12px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); max-width: calc(100vw - 24px); background: var(--cv-accent); color: var(--cv-accent-fg); border-radius: 99px; box-shadow: var(--cv-shadow); padding: 7px 14px; font-family: var(--cv-font); font-size: 13px; font-weight: 600; text-align: center; }
+
+/* --- hide/show the whole comment layer; the dock stays to switch it back --- */
+.cv-hidden .cv-thread, .cv-hidden .cv-badge, .cv-hidden .cv-panel,
+.cv-hidden .cv-composer, .cv-hidden .cv-meta, .cv-hidden .cv-export { display: none !important; }
+.cv-hidden .cv-target:hover, .cv-hidden .cv-target:focus-visible { outline: none; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .cv-ui *, .cv-thread * { transition: none !important; scroll-behavior: auto !important; }
+}
