@@ -1,5 +1,7 @@
 # covibe for DSH
 
+> **Platform support:** DeepSeek Harness 0.2.1-rc.3+ (live). Manual mode works in any browser, with no server.
+
 A DSH port of **covibe 1.1** (the platform-agnostic covibe skill): turn a
 design, plan, architecture or decision into a **commentable page**, let the user
 annotate it in place, and republish at the same URL as comments arrive.

@@ -2,6 +2,8 @@
 
 **Async coworking with your AI agent.**
 
+> **Platform support:** Claude (live). DeepSeek Harness (live, through [`covibe-dsh`](../covibe-dsh)). ChatGPT embedded apps (partial). Codex and agents without a session bridge (manual only — see `covibe/references/chatgpt-codex.md`).
+
 Install the skill, then say something like:
 
 - "Let's covibe the architecture of my project."
@@ -34,4 +36,5 @@ The skill is the `covibe/` folder.
 
 - **Claude (claude.ai and the apps)**: zip the `covibe/` folder and upload it in Claude's skill settings.
 - **Claude Code**: copy `covibe/` into your skills directory, for example `~/.claude/skills/covibe/`.
+- **DeepSeek Harness**: install [`covibe-dsh`](../covibe-dsh) instead. It binds this spec to DSH: a loopback page + comment server, a turn-opening watcher job, and the comment layer from `covibe-2.0` without the Claude APIs.
 - **Other agents with skill support**: the main instructions are platform-neutral. A platform needs a stable page URL, a comment store, and a way for a comment to start the agent's session.

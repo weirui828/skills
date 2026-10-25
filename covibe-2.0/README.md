@@ -2,6 +2,8 @@
 
 **Async coworking with your AI agent.**
 
+> **Platform support:** Claude only. The comment layer in `assets/` calls the Claude artifact APIs (`anchorFor`, `sendToClaude`, `create`). For another platform start from `covibe-1.1` and add a binding under `references/`.
+
 Install the skill, then say something like:
 
 - "Let's covibe the architecture of my project."

@@ -2,6 +2,8 @@
 
 **Async coworking with your AI agent.**
 
+> **Platform support:** Claude (live, through the artifact comment layer). ChatGPT and Codex: manual only — see `covibe/references/chatgpt-codex.md`.
+
 Install the skill, then say something like:
 
 - "Let's covibe the architecture of my project."
