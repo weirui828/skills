@@ -14,7 +14,6 @@ multi-platform ones actually run.
 | `covibe-dsh/` | the covibe 1.1 binding for **DeepSeek Harness**: comment layer, loopback page + comment server, JSONL store, watcher job that wakes the agent | DSH 0.2.1-rc.3+ (live). Manual mode works anywhere with a browser |
 | `tech-doc-drafter/` | unrelated: a documentation drafting skill | — |
 | `castra/` | unrelated: gives a folder of projects one standard layout, shared agent rules and shared memory | — |
-| `promo-video-generator/` | unrelated: makes a voice-over promo video and social copy for the current project | — |
 
 ## Which one do I install?
 

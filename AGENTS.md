@@ -14,7 +14,7 @@ list of folders and the platforms that each one supports.
 - Do not change an old covibe version (`covibe/`, `covibe-1.1/`, `covibe-2.0/`) to add a
   feature. Make a new version folder or a new binding folder.
 - When you add, remove or rename a skill folder, update the table in `README.md`.
-- Local-only skills (`rune/`, `wei-studio/`) are in `.git/info/exclude`. Do not commit them.
+- Local-only skills (`rune/`, `wei-studio/`, `promo-video-generator/`) are in `.git/info/exclude`. Do not commit them.
 - Do not commit packaged archives (`*.zip`). Put them in `out/`.
 
 ## Tests
