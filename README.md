@@ -10,12 +10,13 @@ multi-platform ones actually run.
 | `covibe/` | early covibe: the skill, the Claude artifact binding, and notes for ChatGPT/Codex | Claude (live). ChatGPT / Codex: manual only |
 | `covibe-1.1/` | **platform-neutral covibe spec**: §4 asks for one reference file per platform (`references/`) | Claude (live). DeepSeek Harness (live, via `covibe-dsh`). ChatGPT embedded apps (partial). Codex (manual only) |
 | `covibe-2.0/` | covibe with a reference comment layer, built directly on the Claude artifact APIs | **Claude only.** For any other platform start from `covibe-1.1` and add a binding |
+| `covibe-2.1/` | covibe 2.0 without review mode: links always work, trash items have Restore, manual mode always shows "Copy for chat" | **Claude only** |
 | `covibe-dsh/` | the covibe 1.1 binding for **DeepSeek Harness**: comment layer, loopback page + comment server, JSONL store, watcher job that wakes the agent | DSH 0.2.1-rc.3+ (live). Manual mode works anywhere with a browser |
 | `tech-doc-drafter/` | unrelated: a documentation drafting skill | — |
 
 ## Which one do I install?
 
-- **Claude (claude.ai, apps, Claude Code)** → `covibe-2.0/` (or `covibe-1.1/` if you
+- **Claude (claude.ai, apps, Claude Code)** → `covibe-2.1/` (or `covibe-1.1/` if you
   prefer the smaller, platform-neutral spec).
 - **DeepSeek Harness** → `covibe-dsh/`. See its README for the two commands and the
   wake contract.
@@ -38,4 +39,5 @@ how far it got on each platform in its `references/` directory.
 - `covibe/` — first version: spec + Claude binding + ChatGPT/Codex notes
 - `covibe-1.1/` — spec made platform-neutral, with one reference file per platform
 - `covibe-2.0/` — reference comment layer implementation for Claude artifacts
+- `covibe-2.1/` — 2.0 without review mode, with Restore in the trash
 - `covibe-dsh/` — 1.1 bound to DeepSeek Harness (local server + job-wake loop)
