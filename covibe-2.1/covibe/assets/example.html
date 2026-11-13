@@ -1,0 +1,88 @@
+<title>covibe 2.0 demo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--bg:#f4f6f8;--fg:#18222e;--muted:#5a6776;--card:#fff;--rule:#d9dfe6;--accent:#2f5d8a;--cv-accent:#2f5d8a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161c;--fg:#e5eaf0;--muted:#98a4b1;--card:#1a2129;--rule:#2b3540;--accent:#86b2dc;--cv-accent:#86b2dc;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11161c;--fg:#e5eaf0;--muted:#98a4b1;--card:#1a2129;--rule:#2b3540;--accent:#86b2dc;--cv-accent:#86b2dc;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;margin:0}
+main{max-width:720px;margin:0 auto;padding-block:28px 140px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.15;margin:0;text-wrap:balance}
+h2{font-size:20px;margin:18px 0 0}
+p{margin:0}
+.lede{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+a{color:var(--accent)}
+svg{width:100%;max-width:520px;height:auto;display:block}
+svg rect{fill:var(--card);stroke:var(--rule);stroke-width:1.5}
+svg text{fill:var(--fg);font-size:13px;font-family:inherit}
+svg path{fill:none;stroke:var(--muted);stroke-width:1.5}
+svg .hit{fill:transparent;stroke:none}
+</style>
+<style>/*covibe:css*/</style>
+
+<main id="covibe-root">
+  <h1 data-covibe-id="h7q2m" data-covibe-label="Title">Weekend in Joshua Tree</h1>
+  <p class="lede" data-covibe-id="l3x9a">A demo page for the covibe 2.0 comment layer. Tap anything to comment. Try the quick marks, the diagram nodes, the link and the trash at the bottom.</p>
+
+  <h2 data-covibe-id="s1d4k">Plan</h2>
+  <div class="card" data-covibe-id="d1k8r" data-covibe-label="Day one">
+    <b>Day one</b>
+    <p>Drive in through the west entrance, hike Ryan Mountain before noon, sunset at Keys View.</p>
+  </div>
+  <div class="card" data-covibe-id="d2m5t" data-covibe-label="Day two">
+    <b>Day two</b>
+    <p>Sunrise at Cholla Cactus Garden, then Skull Rock and the drive out through the south.</p>
+  </div>
+
+  <h2 data-covibe-id="s2p7w">Packing</h2>
+  <ul>
+    <li data-covibe-id="k4a1z">Four liters of water per person per day</li>
+    <li data-covibe-id="k5b2y">Headlamp for the sunset walk back</li>
+    <li data-covibe-id="k6c3x">Layers: nights drop below 5 °C in spring</li>
+  </ul>
+  <p data-covibe-id="r8f6v">Check road and trail status on the <a href="https://www.nps.gov/jotr/" target="_blank" rel="noopener">park website</a> before leaving.</p>
+
+  <h2 data-covibe-id="s3g9u">Route</h2>
+  <svg viewBox="0 0 520 120" role="img" aria-label="Route diagram">
+    <g data-covibe-id="n1e7s" data-covibe-label="West entrance"><rect x="8" y="40" width="120" height="40" rx="6"/><text x="68" y="65" text-anchor="middle">West entrance</text></g>
+    <g data-covibe-id="a1h3q" data-covibe-label="Drive to Ryan Mountain"><path d="M128,60 L196,60"/><rect class="hit" x="128" y="48" width="68" height="24"/></g>
+    <g data-covibe-id="n2f8r" data-covibe-label="Ryan Mountain"><rect x="196" y="40" width="128" height="40" rx="6"/><text x="260" y="65" text-anchor="middle">Ryan Mountain</text></g>
+    <g data-covibe-id="a2j4p" data-covibe-label="Drive to Keys View"><path d="M324,60 L392,60"/><rect class="hit" x="324" y="48" width="68" height="24"/></g>
+    <g data-covibe-id="n3g9t" data-covibe-label="Keys View"><rect x="392" y="40" width="120" height="40" rx="6"/><text x="452" y="65" text-anchor="middle">Keys View</text></g>
+  </svg>
+
+  <section id="covibe-meta"></section>
+</main>
+
+<script type="application/json" id="covibe-state">
+{
+  "schema": "covibe/2",
+  "session": "demo-joshua-tree",
+  "revision": 2,
+  "mode": "batch",
+  "batchSize": 5,
+  "lang": "en",
+  "agentName": "Claude",
+  "threads": {
+    "d1k8r": [
+      {"id": "c-demo1", "who": "user", "text": "This feels rushed.", "quote": "hike Ryan Mountain before noon"},
+      {"id": "r-demo1", "who": "agent", "text": "Kept Ryan Mountain and moved Keys View to sunset only, so the afternoon is free. (Example thread.)", "rev": 2, "replyTo": ["c-demo1"]}
+    ],
+    "n2f8r": [
+      {"id": "r-demo2", "who": "agent", "text": "About 4.8 km round trip with 300 m of climb. Start early; there is no shade. (Example note on a diagram node.)", "rev": 2, "replyTo": []}
+    ]
+  },
+  "status": {},
+  "handled": ["c-demo1"],
+  "trash": [
+    {"id": "d0x1x", "label": "Day zero (deleted)", "html": "<p>Arrive Friday night and camp at Jumbo Rocks.</p>"}
+  ],
+  "versions": [
+    {"revision": 1, "summary": "First draft."},
+    {"revision": 2, "summary": "Day one simplified; diagram note added; day zero moved to trash."}
+  ]
+}
+</script>
+<script>/*covibe:js*/</script>
+<script>Covibe.mount({ root: document.getElementById("covibe-root") });</script>
